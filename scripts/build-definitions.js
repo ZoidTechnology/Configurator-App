@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { exec } = require('child_process');
+const {exec} = require('child_process');
 
 function buildDefinitions() {
   if (fs.existsSync('./public/definitions')) {
@@ -13,7 +13,7 @@ function buildDefinitions() {
       console.error(error);
       return;
     }
-     
+
     if (stderr) {
       console.error('stderr');
       return;

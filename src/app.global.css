@@ -17,7 +17,12 @@ body {
   position: relative;
   color: white;
   background-color: #232c39;
-  font-family: 'Fira Sans', Helvetica, Helvetica Neue, Arial, serif;
+  font-family:
+    'Fira Sans',
+    Helvetica,
+    Helvetica Neue,
+    Arial,
+    serif;
   font-weight: 300;
   overflow: hidden;
   margin: 0;
@@ -25,7 +30,12 @@ body {
   user-select: none;
 }
 button {
-  font-family: 'Fira Sans', Helvetica, Helvetica Neue, Arial, serif;
+  font-family:
+    'Fira Sans',
+    Helvetica,
+    Helvetica Neue,
+    Arial,
+    serif;
   font-weight: 300;
 }
 h2 {
@@ -66,7 +76,6 @@ a:hover {
   --box-shadow-keycap: inset -1px -1px 0 rgb(0 0 0 / 20%),
     inset 1px 1px 0 rgb(255 255 255 / 20%);
   --box-shadow-keyboard: var(--box-shadow-keycap);
-
 }
 
 html[data-theme-mode='dark'] {
@@ -141,10 +150,10 @@ html[data-theme-mode='light'] {
 }
 @keyframes roll {
   0% {
-    transform:  translate3d(-50px, 0px, 0) rotate(-30deg);
+    transform: translate3d(-50px, 0px, 0) rotate(-30deg);
   }
   100% {
-    transform:   translate3d(50px, 0px, 0) rotate(30deg);
+    transform: translate3d(50px, 0px, 0) rotate(30deg);
   }
 }
 @keyframes text-glow {
