@@ -20,7 +20,6 @@
     "@fortawesome/free-brands-svg-icons": "^6.3.0",
     "@fortawesome/free-solid-svg-icons": "^6.3.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@microsoft/applicationinsights-web": "^2.8.10",
     "@react-hook/resize-observer": "^1.2.6",
     "@react-spring/three": "^9.7.0",
     "@react-three/drei": "^9.56.27",
