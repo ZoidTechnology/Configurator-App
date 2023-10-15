@@ -7,12 +7,11 @@ declare module '*.json5' {
   export default value;
 }
 
-/* glb */
+/* GLB */
 declare module '*.glb' {
   const ref: string;
   export default ref;
 }
-
 declare module '*.gltf' {
   const ref: string;
   export default ref;
@@ -48,7 +47,6 @@ declare module '*.png' {
 }
 
 /* CUSTOM: ADD YOUR OWN HERE */
-
 declare global {
   interface Navigator {
     keyboard: {

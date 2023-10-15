@@ -7,7 +7,6 @@ import fs from 'fs';
 
 const hash = fs.readFileSync('public/definitions/hash.json', 'utf8');
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
@@ -32,11 +31,9 @@ export default defineConfig({
   optimizeDeps: {
     include: ['@the-via/reader'],
     esbuildOptions: {
-      // Node.js global to browser globalThis
       define: {
         global: 'globalThis',
       },
-      // Enable esbuild polyfill plugins
       plugins: [],
     },
   },
