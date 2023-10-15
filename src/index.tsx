@@ -14,7 +14,6 @@ import {BrowserTracing} from '@sentry/tracing';
 const {MODE} = import.meta.env;
 
 Sentry.init({
-  dsn: 'https://1083464e2a864de791972ab8c976849a@o4504817817747456.ingest.sentry.io/4504817834655749',
   integrations: [new BrowserTracing()],
   tracesSampleRate: 1.0,
   normalizeDepth: 10,
