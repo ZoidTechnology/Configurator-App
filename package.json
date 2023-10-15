@@ -3,8 +3,8 @@
   "scripts": {
     "dev": "node scripts/build-definitions.js && vite --force",
     "build": "npm run build:kbs && tsc && vite build",
-    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
-    "lint": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,json}\"",
+    "lint": "prettier --check \"**/*.{js,jsx,ts,tsx,css,json}\"",
     "refresh-kbs": "npm uninstall --force via-keyboards && npm install --force github:the-via/keyboards",
     "build:azure": "npm run refresh-kbs && npm run build",
     "preview": "vite preview",
