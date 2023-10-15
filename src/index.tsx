@@ -9,12 +9,10 @@ import {
 import {updateCSSVariables} from './utils/color-math';
 import {THEMES} from './utils/themes';
 import * as Sentry from '@sentry/react';
-import {BrowserTracing} from '@sentry/tracing';
 
 const {MODE} = import.meta.env;
 
 Sentry.init({
-  integrations: [new BrowserTracing()],
   tracesSampleRate: 1.0,
   normalizeDepth: 10,
   environment: MODE,
