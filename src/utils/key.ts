@@ -209,17 +209,20 @@ export const keycodesList = getKeycodes().reduce<IKeycode[]>(
 );
 
 export const getByteToKey = (basicKeyToByte: Record<string, number>) =>
-  Object.keys(basicKeyToByte).reduce((p, n) => {
-    const key = basicKeyToByte[n];
-    if (key in p) {
-      const basicKeycode = keycodesList.find(({code}) => code === n);
-      if (basicKeycode) {
-        return {...p, [key]: basicKeycode.code};
+  Object.keys(basicKeyToByte).reduce(
+    (p, n) => {
+      const key = basicKeyToByte[n];
+      if (key in p) {
+        const basicKeycode = keycodesList.find(({code}) => code === n);
+        if (basicKeycode) {
+          return {...p, [key]: basicKeycode.code};
+        }
+        return p;
       }
-      return p;
-    }
-    return {...p, [key]: n};
-  }, {} as {[key: number]: string});
+      return {...p, [key]: n};
+    },
+    {} as {[key: number]: string},
+  );
 
 function isLayerKey(byte: number, basicKeyToByte: Record<string, number>) {
   return [
@@ -1000,7 +1003,7 @@ export const categoriesForKeycodeModule = (
     default: ['basic', 'media', 'macro', 'layers', 'special'],
     [BuiltInKeycodeModule.WTLighting]: ['wt_lighting'],
     [BuiltInKeycodeModule.QMKLighting]: ['qmk_lighting'],
-  }[keycodeModule]);
+  })[keycodeModule];
 
 export const getKeycodesForKeyboard = (
   definition: VIADefinitionV3 | VIADefinitionV2,

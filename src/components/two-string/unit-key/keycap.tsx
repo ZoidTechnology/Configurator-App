@@ -421,7 +421,8 @@ const GlowContainer = styled.div<{$selected: boolean}>`
   box-sizing: border-box;
   padding: 2px 6px 10px 6px;
   transition: transform 0.2s ease-out;
-  box-shadow: inset -1px -1px 0 rgb(0 0 0 / 20%),
+  box-shadow:
+    inset -1px -1px 0 rgb(0 0 0 / 20%),
     inset 1px 1px 0 rgb(255 255 255 / 20%);
   animation: ${(p) =>
     p.$selected ? '.75s infinite alternate select-glow' : 'initial'};

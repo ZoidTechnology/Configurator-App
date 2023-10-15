@@ -199,7 +199,8 @@ const ComboKeyBoundingContainer = styled.div<{$selected: boolean}>`
 const ComboKeyRectContainer = styled.div<{}>`
   box-sizing: border-box;
   padding: 2px 6px 10px 6px;
-  box-shadow: inset -1px -1px 0 rgb(0 0 0 / 20%),
+  box-shadow:
+    inset -1px -1px 0 rgb(0 0 0 / 20%),
     inset 1px 1px 0 rgb(255 255 255 / 20%);
 `;
 const ComboKeyBGContainer = styled.div<{}>`

@@ -104,13 +104,16 @@ const smartTransform = (
 };
 
 const componentJoin = (arr: (JSX.Element | null)[], separator: JSX.Element) => {
-  return arr.reduce((acc, next, idx) => {
-    if (idx) {
-      acc.push({...separator, key: idx});
-    }
-    acc.push(next);
-    return acc;
-  }, [] as (JSX.Element | null)[]);
+  return arr.reduce(
+    (acc, next, idx) => {
+      if (idx) {
+        acc.push({...separator, key: idx});
+      }
+      acc.push(next);
+      return acc;
+    },
+    [] as (JSX.Element | null)[],
+  );
 };
 
 const KeycodeMap = getKeycodes()
