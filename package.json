@@ -1,7 +1,6 @@
 {
   "license": "GPL-3.0",
   "scripts": {
-    "start": "concurrently --names \"vite,azure-fn-dev\" -c \"bgBlue,bgMagenta\" \"npm run dev\" \"npm --prefix api start\"",
     "dev": "node scripts/build-definitions.js && vite --force",
     "build": "npm run build:kbs && tsc && vite build",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
@@ -61,7 +60,6 @@
     "@types/webscopeio__react-textarea-autocomplete": "^4.7.2",
     "@types/wicg-file-system-access": "^2020.9.5",
     "@vitejs/plugin-react": "^3.1.0",
-    "concurrently": "^7.6.0",
     "husky": "^8.0.3",
     "ts-node": "^10.9.1",
     "ts-prune": "^0.10.3",

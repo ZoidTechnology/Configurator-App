@@ -68,46 +68,6 @@ const ControlGroupHeader = styled.div`
   margin-bottom: 0.5rem;
 `;
 
-// const GithubUserData = () => {
-//   const [userData, setUserData] = useState<{
-//     login: string;
-//     avatar_url: string;
-//   }>();
-//   const clickLogin = useCallback(async () => {
-//     await authGithub();
-//     const userData = await getUser();
-//     setUserData(userData);
-//   }, []);
-//   // Attempt first
-//   useEffect(() => {
-//     (async () => {
-//       const userData = await getUser();
-//       setUserData(userData);
-//     })();
-//   }, []);
-//   return (
-//     <ControlGroup>
-//       <ControlGroupHeader>GH Integration</ControlGroupHeader>
-//       {userData && (
-//         <ControlRow>
-//           <Label>{userData.login}</Label>
-//           <Detail>
-//             <img src={userData.avatar_url} width={40} height={40} />
-//           </Detail>
-//         </ControlRow>
-//       )}
-//       {!userData && (
-//         <ControlRow>
-//           <Label>Login</Label>
-//           <Detail>
-//             <AccentButton onClick={clickLogin}>OAuth me</AccentButton>
-//           </Detail>
-//         </ControlRow>
-//       )}
-//     </ControlGroup>
-//   );
-// };
-
 const TestControls = () => {
   const [isChecked, setIsChecked] = useState(true);
   const [rangeVal, setRangeVal] = useState(0);
@@ -262,7 +222,6 @@ export const Debug: FC = () => {
     <Pane>
       <OverflowCell>
         <Container>
-          {/* <GithubUserData /> */}
           <ControlGroup>
             <ControlGroupHeader>Key Testing</ControlGroupHeader>
             <ControlRow>
