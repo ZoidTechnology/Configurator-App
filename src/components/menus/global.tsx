@@ -8,7 +8,9 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {CategoryMenuTooltip} from '../inputs/tooltip';
 import {CategoryIconContainer} from '../panes/grid';
 import {ErrorLink, ErrorsPaneConfig} from '../panes/errors';
-import {ExternalLinks} from './external-links';
+import {ExternalLink} from './external-link';
+import {SevenCrumbsLogo} from '../icons/sevencrumbs';
+import {faGithub} from '@fortawesome/free-brands-svg-icons';
 
 const Container = styled.div`
   width: 100vw;
@@ -53,9 +55,20 @@ export const UnconnectedGlobalMenu = () => {
   return (
     <React.Fragment>
       <GlobalContainer>
+        <ExternalLink
+          side="left"
+          href="https://sevencrumbs.com/"
+          icon={<SevenCrumbsLogo height="24px" />}
+          tooltip="Website"
+        />
         <ErrorLink />
         {Panes}
-        <ExternalLinks />
+        <ExternalLink
+          side="right"
+          href="https://github.com/ZoidTechnology/Configurator-App"
+          icon={<FontAwesomeIcon icon={faGithub} size="xl" />}
+          tooltip="GitHub"
+        />
       </GlobalContainer>
     </React.Fragment>
   );
