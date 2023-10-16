@@ -8,7 +8,7 @@ function buildDefinitions() {
 
   console.log('Definitions not found. Building...');
 
-  exec('via-keyboards public/definitions', (error, stdout, stderr) => {
+  exec('configurator-keyboards public/definitions', (error, stdout, stderr) => {
     if (error) {
       console.error(error);
       return;

@@ -5,9 +5,9 @@
     "build": "npm run build:kbs && tsc && vite build",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,json}\"",
     "lint": "prettier --check \"**/*.{js,jsx,ts,tsx,css,json}\"",
-    "refresh-kbs": "npm uninstall --force via-keyboards && npm install --force github:the-via/keyboards",
+    "refresh-kbs": "npm uninstall configurator-keyboards && npm install github:ZoidTechnology/Configurator-Keyboards",
     "preview": "vite preview",
-    "build:kbs": "via-keyboards public/definitions",
+    "build:kbs": "configurator-keyboards public/definitions",
     "find-deadcode": "ts-prune"
   },
   "engines": {
@@ -27,6 +27,7 @@
     "@the-via/pelpi": "^0.0.3",
     "@the-via/reader": "^1.8.0",
     "@webscopeio/react-textarea-autocomplete": "^4.9.2",
+    "configurator-keyboards": "github:ZoidTechnology/Configurator-Keyboards",
     "downshift": "^7.2.1",
     "idb-keyval": "^6.2.0",
     "json-stringify-pretty-compact": "^4.0.0",
@@ -39,7 +40,6 @@
     "react-textarea-autosize": "^8.4.0",
     "styled-components": "^6.0.0-beta.5",
     "three": "^0.150.1",
-    "via-keyboards": "github:the-via/keyboards",
     "wouter": "^2.10.0"
   },
   "devDependencies": {
