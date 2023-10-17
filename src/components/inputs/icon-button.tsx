@@ -43,12 +43,12 @@ export const IconButton = styled.button`
 
     color: var(--color_label-highlighted);
     & .tooltip {
-      transform: scale(1) translateX(0px);
+      transform: translateX(-50%) scale(1);
       opacity: 1;
     }
   }
   .tooltip {
-    transform: translateX(-5px) scale(0.6);
+    transform: translateX(-50%) scale(0.6);
     opacity: 0;
   }
 `;
