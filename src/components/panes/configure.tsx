@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
-import ChippyLoader from '../chippy-loader';
 import LoadingText from '../loading-text';
 import {CenterPane, ConfigureBasePane} from './pane';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
@@ -41,6 +40,7 @@ import {isElectron} from 'src/utils/running-context';
 import {useAppDispatch} from 'src/store/hooks';
 import {MenuTooltip} from '../inputs/tooltip';
 import {getRenderMode, getSelectedTheme} from 'src/store/settingsSlice';
+import SevenCrumbsLoader from '../sevencrumbs-loader';
 
 const MenuContainer = styled.div`
   padding: 15px 10px 20px 10px;
@@ -166,7 +166,7 @@ const Loader: React.FC<{
   }, [selectedDefinition]);
   return (
     <LoaderPane>
-      {<ChippyLoader theme={theme} progress={loadProgress || null} />}
+      <SevenCrumbsLoader theme={theme} />
       {(showButton || noConnectedDevices) && !noSupportedIds && !isElectron ? (
         <AccentButtonLarge onClick={() => dispatch(reloadConnectedDevices())}>
           Authorize device

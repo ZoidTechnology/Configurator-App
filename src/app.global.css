@@ -147,14 +147,7 @@ html[data-theme-mode='light'] {
     border: 2px dashed var(--color_accent);
   }
 }
-@keyframes roll {
-  0% {
-    transform: translate3d(-50px, 0px, 0) rotate(-30deg);
-  }
-  100% {
-    transform: translate3d(50px, 0px, 0) rotate(30deg);
-  }
-}
+
 @keyframes text-glow {
   0% {
     stroke: var(--color_accent);
