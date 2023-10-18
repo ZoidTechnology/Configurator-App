@@ -32,14 +32,15 @@ import {
   getSelectedTheme,
 } from 'src/store/settingsSlice';
 import glbSrc from 'assets/models/keyboard_components.glb';
-import cubeySrc from 'assets/models/cubey.glb';
+import logo from 'assets/models/logo.glb';
 import {AccentButtonLarge} from '../inputs/accent-button';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {reloadConnectedDevices} from 'src/store/devicesThunks';
 import {faSpinner, faUnlock} from '@fortawesome/free-solid-svg-icons';
-import {LoaderCubey} from './loader-cubey';
+import {Loader} from './sevencrumbs-loader-3d';
 import {OVERRIDE_HID_CHECK} from 'src/utils/override';
-useGLTF.preload(cubeySrc);
+
+useGLTF.preload(logo);
 useGLTF.preload(glbSrc);
 
 const KeyboardBG: React.FC<{
@@ -141,7 +142,7 @@ export const CanvasRouter = () => {
           />
           <OrbitControls enabled={false} />
           <Camera />
-          <LoaderCubey
+          <Loader
             theme={theme}
             visible={hideTerrainBG && !selectedDefinition}
           />
