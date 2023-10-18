@@ -36,7 +36,7 @@ import logo from 'assets/models/logo.glb';
 import {AccentButtonLarge} from '../inputs/accent-button';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {reloadConnectedDevices} from 'src/store/devicesThunks';
-import {faSpinner, faUnlock} from '@fortawesome/free-solid-svg-icons';
+import {faPlus, faSpinner} from '@fortawesome/free-solid-svg-icons';
 import {Loader} from './sevencrumbs-loader-3d';
 import {OVERRIDE_HID_CHECK} from 'src/utils/override';
 
@@ -161,10 +161,7 @@ export const CanvasRouter = () => {
                   style={{width: 'max-content'}}
                 >
                   Authorize device
-                  <FontAwesomeIcon
-                    style={{marginLeft: '10px'}}
-                    icon={faUnlock}
-                  />
+                  <FontAwesomeIcon style={{marginLeft: '10px'}} icon={faPlus} />
                 </AccentButtonLarge>
               ) : (
                 <>
