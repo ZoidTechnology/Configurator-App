@@ -33,9 +33,9 @@ const LayerButton = styled.button<{$selected?: boolean}>`
   font-weight: 400;
   &:hover {
     border: none;
-    background: ${(props) => (props.$selected ? 'auto' : 'var(--bg_menu)')};
-    color: ${(props) =>
-      props.$selected ? 'auto' : 'var(--color_label-highlighted)'};
+    background: ${(props) =>
+      props.$selected ? 'auto' : 'var(--color_tinge-light)'};
+    color: ${(props) => (props.$selected ? 'auto' : 'var(--color_light-jet)')};
   }
 `;
 
