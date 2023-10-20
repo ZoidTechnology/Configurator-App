@@ -18,7 +18,7 @@ import {IconButtonTooltip} from 'src/components/inputs/tooltip';
 import styled from 'styled-components';
 
 const MacroEditControlsContainer = styled.div`
-  background: var(--bg_menu);
+  background: var(--bg_page);
   display: inline-flex;
   align-items: center;
   padding: 0 10px;

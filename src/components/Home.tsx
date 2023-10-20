@@ -32,7 +32,7 @@ import {OVERRIDE_HID_CHECK} from 'src/utils/override';
 import {KeyboardValue} from 'src/utils/keyboard-api';
 
 const ErrorHome = styled.div`
-  background: var(--bg_gradient);
+  background: var(--bg_menu);
   display: flex;
   flex-direction: column;
   flex-grow: 1;
