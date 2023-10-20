@@ -44,7 +44,7 @@ export const Loader: React.FC<{theme: Theme; visible: boolean}> = React.memo(
 
     return (
       <>
-        <group scale={visible ? 0.15 : 0} position={[0, 0, -20]}>
+        <group scale={0.15} position={[0, 0, -20]} visible={visible}>
           <PresentationControls
             enabled={true}
             global={true}
