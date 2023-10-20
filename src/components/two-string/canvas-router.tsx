@@ -36,9 +36,7 @@ const KeyboardBG = styled.div<{
   bottom: 0;
   left: 0;
   background: ${(props) =>
-    `linear-gradient(30deg, rgba(150,150,150,1) 10%,${getDarkenedColor(
-      props.$color,
-    )} 50%, rgba(150,150,150,1) 90%)`};
+    `linear-gradient(${getDarkenedColor(props.$color, 0.5)}, ${props.$color})`};
   opacity: ${(props) => (props.$visible ? 1 : 0)};
 `;
 
@@ -69,7 +67,7 @@ export const CanvasRouter = () => {
   const selectedDefinition = useAppSelector(getSelectedDefinition);
   const definitionVersion = useAppSelector(getDesignDefinitionVersion);
   const theme = useAppSelector(getSelectedTheme);
-  const accentColor = useMemo(() => theme[KeyColorType.Accent].c, [theme]);
+  const accentColor = useMemo(() => theme[KeyColorType.Alpha].c, [theme]);
   const showLoader =
     path === '/' && (!selectedDefinition || loadProgress !== 1);
   const versionDefinitions: DefinitionVersionMap[] = useMemo(

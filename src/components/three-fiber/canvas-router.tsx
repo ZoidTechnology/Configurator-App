@@ -74,7 +74,7 @@ export const CanvasRouter = () => {
   const selectedDefinition = useAppSelector(getSelectedDefinition);
   const definitionVersion = useAppSelector(getDesignDefinitionVersion);
   const theme = useAppSelector(getSelectedTheme);
-  const accentColor = useMemo(() => theme[KeyColorType.Accent].c, [theme]);
+  const accentColor = useMemo(() => theme[KeyColorType.Alpha].c, [theme]);
   const [fontLoaded, setLoaded] = useState(false);
   const showLoader =
     path === '/' && (!selectedDefinition || loadProgress !== 1);
