@@ -9,6 +9,20 @@ export type Theme = {
 
 export const THEMES = {
   ...{
+    SEVEN_CRUMBS: {
+      alpha: {
+        c: '#F8F8F8',
+        t: '#282828',
+      },
+      mod: {
+        c: '#282828',
+        t: '#00FFC0',
+      },
+      accent: {
+        c: '#00FFC0',
+        t: '#282828',
+      },
+    },
     OLIVIA_DARK: {
       alpha: {
         c: '#363434',
