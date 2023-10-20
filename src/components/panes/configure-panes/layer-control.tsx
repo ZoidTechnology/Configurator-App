@@ -17,7 +17,7 @@ const Container = styled.div`
 const Label = styled.label`
   font-size: 20px;
   text-transform: uppercase;
-  color: var(--color_label-highlighted);
+  color: var(--color_light-grey);
   margin-right: 6px;
 `;
 const LayerButton = styled.button<{$selected?: boolean}>`
@@ -27,9 +27,7 @@ const LayerButton = styled.button<{$selected?: boolean}>`
   background: ${(props) =>
     props.$selected ? 'var(--color_accent)' : 'transparent'};
   color: ${(props) =>
-    props.$selected
-      ? 'var(--color_inside-accent)'
-      : 'var(--color_label-highlighted)'};
+    props.$selected ? 'var(--color_inside-accent)' : 'var(--color_light-grey)'};
   cursor: pointer;
   font-size: 20px;
   font-weight: 400;
