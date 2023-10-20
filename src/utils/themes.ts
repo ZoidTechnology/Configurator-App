@@ -11,8 +11,8 @@ export const THEMES = {
   ...{
     SEVEN_CRUMBS: {
       alpha: {
-        c: '#F8F8F8',
-        t: '#282828',
+        c: '#383838',
+        t: '#F8F8F8',
       },
       mod: {
         c: '#282828',
