@@ -21,7 +21,6 @@ import {ErrorMessage} from 'src/components/styled';
 
 const Encoder = styled(CenterPane)`
   height: 100%;
-  background: var(--color_dark_grey);
 `;
 
 const Container = styled.div`
