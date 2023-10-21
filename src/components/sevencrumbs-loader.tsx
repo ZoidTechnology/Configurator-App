@@ -31,7 +31,7 @@ export default function (props: {theme: Theme}) {
         </linearGradient>
       </defs>
       <g clipPath="url(#sevencrumbs-loader-clip)">
-        <rect width="100%" height="100%" fill={props.theme.accent.c} />
+        <rect width="100%" height="100%" fill="var(--color_accent)" />
         <rect
           width="100%"
           height="100%"
