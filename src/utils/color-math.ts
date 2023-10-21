@@ -49,9 +49,9 @@ export const getBrightenedColor = (color: string, multiplier = 0.8) => {
   const r = parseInt(cleanedColor[0], 16) * 16 + parseInt(cleanedColor[1], 16);
   const g = parseInt(cleanedColor[2], 16) * 16 + parseInt(cleanedColor[3], 16);
   const b = parseInt(cleanedColor[4], 16) * 16 + parseInt(cleanedColor[5], 16);
-  const hr = Math.min(Math.round(r / multiplier), 256).toString(16);
-  const hg = Math.min(Math.round(g / multiplier), 256).toString(16);
-  const hb = Math.min(Math.round(b / multiplier), 256).toString(16);
+  const hr = Math.min(Math.round(r / multiplier), 255).toString(16);
+  const hg = Math.min(Math.round(g / multiplier), 255).toString(16);
+  const hb = Math.min(Math.round(b / multiplier), 255).toString(16);
   const res = `#${hr.padStart(2, '0')}${hg.padStart(2, '0')}${hb.padStart(
     2,
     '0',
