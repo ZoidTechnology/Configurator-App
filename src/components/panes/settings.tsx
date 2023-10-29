@@ -173,7 +173,7 @@ export const Settings = () => {
           {showDiagnostics && selectedDevice ? (
             <DiagnosticContainer>
               <ControlRow>
-                <Label>VIA Firmware Protocol</Label>
+                <Label>Firmware Protocol</Label>
                 <Detail>{selectedDevice.protocol}</Detail>
               </ControlRow>
             </DiagnosticContainer>
