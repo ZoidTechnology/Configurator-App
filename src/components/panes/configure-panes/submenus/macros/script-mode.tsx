@@ -13,9 +13,10 @@ import {ErrorMessage} from '../../../../styled';
 import styled from 'styled-components';
 
 const TextArea = styled.textarea`
+  display: block;
   box-sizing: border-box;
   background: var(--bg_control);
-  padding: 5px 10px;
+  padding: 10px;
   border-color: var(--border_color_icon);
   color: var(--color_label);
   width: 100%;
@@ -30,17 +31,7 @@ const TextArea = styled.textarea`
   }
   &:focus {
     color: var(--color_accent);
-    outline-color: var(--color_accent);
-  }
-`;
-
-const ToastErrorMessage = styled(ErrorMessage)`
-  margin: 0;
-  width: 100%;
-  font-size: 14px;
-  display: block;
-  &:empty {
-    display: none;
+    border-color: var(--color_accent);
   }
 `;
 
@@ -49,21 +40,14 @@ const Message = styled.div`
 `;
 
 const Link = styled.a`
-  font-size: 18x !important;
   color: var(--color_accent);
   text-decoration: underline;
 `;
 
 const DescriptionLabel = styled(Label)`
-  margin: 1em 0;
+  margin: 10px 0;
   font-size: 14px;
   line-height: 18px;
-  font-style: oblique;
-  padding-left: 5px;
-`;
-
-const AutoHeightRow = styled(ControlRow)`
-  height: auto;
 `;
 
 export const ScriptMode: React.FC<{
@@ -104,7 +88,7 @@ export const ScriptMode: React.FC<{
   const hasError = errorMessage !== undefined;
   return (
     <>
-      <AutoHeightRow>
+      <ControlRow>
         <ReactTextareaAutocomplete
           value={currentValue}
           onChange={(e) => setCurrentValue(e.target.value)}
@@ -116,9 +100,10 @@ export const ScriptMode: React.FC<{
             height: '140px',
             fontFamily: 'monospace',
             resize: 'none',
-            borderColor: hasError
-              ? 'var(--color_error)'
-              : 'var(--border_color_icon)',
+            borderRadius: 5,
+            margin: '10px 0',
+            borderColor: hasError ? 'var(--color_error)' : undefined,
+            color: hasError ? 'var(--color_error)' : undefined,
           }}
           containerStyle={{
             border: 'none',
@@ -172,10 +157,9 @@ export const ScriptMode: React.FC<{
             },
           }}
         />
-      </AutoHeightRow>
-      <AutoHeightRow>
+      </ControlRow>
+      <ControlRow>
         <DescriptionLabel>
-          <ToastErrorMessage>{errorMessage}</ToastErrorMessage>
           <Message>
             Enter text directly, or wrap{' '}
             <Link href="https://docs.qmk.fm/#/keycodes_basic" target="_blank">
@@ -192,14 +176,14 @@ export const ScriptMode: React.FC<{
           ) : (
             'Upgrade firmware to use delays'
           )}
-          <Message>Type ? to search for keycodes</Message>
         </DescriptionLabel>
         <Detail>
           <AccentButton disabled={macro === currentValue} onClick={saveMacro}>
             Save
           </AccentButton>
         </Detail>
-      </AutoHeightRow>
+      </ControlRow>
+      {errorMessage ? <ErrorMessage>{errorMessage}</ErrorMessage> : null}
     </>
   );
 };

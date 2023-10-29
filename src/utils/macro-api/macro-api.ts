@@ -32,7 +32,7 @@ export function validateMacroExpression(expression: string): ValidationResult {
     return {
       isValid: false,
       errorMessage:
-        "Looks like a keycode block - {} - is unclosed! Are you missing an '}'?",
+        "Looks like a keycode block - {} - is unclosed! Are you missing a '}'?",
     };
   }
 
