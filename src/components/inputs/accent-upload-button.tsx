@@ -4,6 +4,7 @@ type Props = {
   onLoad: (files: File[]) => void;
   multiple?: boolean;
   inputRef?: React.MutableRefObject<HTMLInputElement | undefined>;
+  accept?: string;
   children: string;
 };
 
@@ -20,7 +21,7 @@ export function AccentUploadButton(props: Props) {
         ref={input as any}
         type="file"
         multiple={props.multiple}
-        accept="application/json"
+        accept={props.accept || 'application/json'}
         style={{display: 'none'}}
         onChange={onChange}
       />

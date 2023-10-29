@@ -3,7 +3,11 @@ import styled from 'styled-components';
 import {MacroRecorder} from './macro-recorder';
 import {useAppSelector} from 'src/store/hooks';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faClapperboard, faCode} from '@fortawesome/free-solid-svg-icons';
+import {
+  faClapperboard,
+  faCode,
+  faFileImport,
+} from '@fortawesome/free-solid-svg-icons';
 import {ScriptMode} from './script-mode';
 import {ProgressBarTooltip} from 'src/components/inputs/tooltip';
 import {getIsDelaySupported, getMacroBufferSize} from 'src/store/macrosSlice';
@@ -12,6 +16,7 @@ import {
   getSelectedKeyboardAPI,
 } from 'src/store/devicesSlice';
 import {getMacroAPI} from 'src/utils/macro-api';
+import {MacroImport} from './macro-import';
 
 const ProgressBarContainer = styled.div`
   position: relative;
@@ -130,7 +135,9 @@ const BufferSizeUsage = () => {
 
 export const MacroDetailPane: React.FC<Props> = (props) => {
   const currentMacro = props.macroExpressions[props.selectedMacro] || '';
-  const [showAdvancedView, setShowAdvancedView] = React.useState(false);
+  const [selectedTab, setSelectedTab] = React.useState<
+    'record' | 'script' | 'import'
+  >('record');
   const ast = useAppSelector((state) => state.macros.ast);
   const isDelaySupported = useAppSelector(getIsDelaySupported);
   const [unsavedMacro, setUnsavedMacro] = useState(currentMacro);
@@ -161,39 +168,57 @@ export const MacroDetailPane: React.FC<Props> = (props) => {
       <CenterTabContainer>
         <TabBar>
           <MacroTab
-            $selected={!showAdvancedView}
-            onClick={() => setShowAdvancedView(false)}
+            $selected={selectedTab === 'record'}
+            onClick={() => setSelectedTab('record')}
           >
             <FontAwesomeIcon icon={faClapperboard} />
           </MacroTab>
           <MacroTab
-            $selected={showAdvancedView}
-            onClick={() => setShowAdvancedView(true)}
+            $selected={selectedTab === 'script'}
+            onClick={() => setSelectedTab('script')}
           >
             <FontAwesomeIcon icon={faCode} />
+          </MacroTab>
+          <MacroTab
+            $selected={selectedTab === 'import'}
+            onClick={() => setSelectedTab('import')}
+          >
+            <FontAwesomeIcon icon={faFileImport} />
           </MacroTab>
         </TabBar>
       </CenterTabContainer>
       <BufferSizeUsage />
-      {showAdvancedView ? (
-        <ScriptMode
-          macro={currentMacro}
-          macroIndex={props.selectedMacro}
-          protocol={props.protocol}
-          isDelaySupported={isDelaySupported}
-          setUnsavedMacro={setUnsavedMacro}
-          saveMacros={props.saveMacros}
-          key={props.selectedMacro}
-        />
-      ) : (
-        <MacroRecorder
-          selectedMacro={ast[props.selectedMacro]}
-          setUnsavedMacro={setUnsavedMacro}
-          undoMacro={undoChanges}
-          saveMacro={saveMacro}
-          isDelaySupported={isDelaySupported}
-        />
-      )}
+      {(() => {
+        if (selectedTab === 'record') {
+          return (
+            <MacroRecorder
+              selectedMacro={ast[props.selectedMacro]}
+              setUnsavedMacro={setUnsavedMacro}
+              undoMacro={undoChanges}
+              saveMacro={saveMacro}
+              isDelaySupported={isDelaySupported}
+            />
+          );
+        }
+
+        if (selectedTab === 'script') {
+          return (
+            <ScriptMode
+              macro={currentMacro}
+              macroIndex={props.selectedMacro}
+              protocol={props.protocol}
+              isDelaySupported={isDelaySupported}
+              setUnsavedMacro={setUnsavedMacro}
+              saveMacros={props.saveMacros}
+              key={props.selectedMacro}
+            />
+          );
+        }
+
+        if (selectedTab === 'import') {
+          return <MacroImport save={props.saveMacros} />;
+        }
+      })()}
     </>
   );
 };

@@ -166,7 +166,7 @@ function convertToTapsAndChords(
   return seq3;
 }
 
-const mapKeycodeToCharacterStream: Record<string, string[]> = {
+export const mapKeycodeToCharacterStream: Record<string, string[]> = {
   KC_A: ['a', 'A'],
   KC_B: ['b', 'B'],
   KC_C: ['c', 'C'],
