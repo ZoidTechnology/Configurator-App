@@ -39,6 +39,7 @@ import {reloadConnectedDevices} from 'src/store/devicesThunks';
 import {faPlus, faSpinner} from '@fortawesome/free-solid-svg-icons';
 import {Loader} from './sevencrumbs-loader-3d';
 import {OVERRIDE_HID_CHECK} from 'src/utils/override';
+import MatrixAd from '../matrix-ad';
 
 useGLTF.preload(logo);
 useGLTF.preload(glbSrc);
@@ -187,6 +188,7 @@ export const CanvasRouter = () => {
           ) : null}
         </Canvas>
       </div>
+      {hideTerrainBG ? <MatrixAd /> : null}
     </>
   );
 };

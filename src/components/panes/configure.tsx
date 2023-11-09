@@ -41,6 +41,7 @@ import {useAppDispatch} from 'src/store/hooks';
 import {MenuTooltip} from '../inputs/tooltip';
 import {getRenderMode, getSelectedTheme} from 'src/store/settingsSlice';
 import SevenCrumbsLoader from '../sevencrumbs-loader';
+import MatrixAd from '../matrix-ad';
 
 const MenuContainer = styled.div`
   padding: 15px 10px 20px 10px;
@@ -175,6 +176,7 @@ const Loader: React.FC<{
       ) : (
         <LoadingText isSearching={!selectedDefinition} />
       )}
+      <MatrixAd />
     </LoaderPane>
   );
 };
