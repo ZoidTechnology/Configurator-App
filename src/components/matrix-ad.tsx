@@ -14,6 +14,7 @@ const AdContainer = styled.a`
   color: var(--color_label-highlighted);
   bottom: 50px;
   transition: all 0.1s;
+  margin-left: 45px;
 
   &:hover {
     transform: scale(1.05);
