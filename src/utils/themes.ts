@@ -9,7 +9,7 @@ export type Theme = {
 
 export const THEMES = {
   ...{
-    SEVEN_CRUMBS: {
+    CODE7: {
       alpha: {
         c: '#383838',
         t: '#F8F8F8',

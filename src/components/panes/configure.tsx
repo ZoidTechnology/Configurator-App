@@ -40,7 +40,7 @@ import {isElectron} from 'src/utils/running-context';
 import {useAppDispatch} from 'src/store/hooks';
 import {MenuTooltip} from '../inputs/tooltip';
 import {getRenderMode, getSelectedTheme} from 'src/store/settingsSlice';
-import SevenCrumbsLoader from '../sevencrumbs-loader';
+import Code7Loader from '../code7-loader';
 import MatrixAd from '../matrix-ad';
 
 const MenuContainer = styled.div`
@@ -167,7 +167,7 @@ const Loader: React.FC<{
   }, [selectedDefinition]);
   return (
     <LoaderPane>
-      <SevenCrumbsLoader theme={theme} />
+      <Code7Loader theme={theme} />
       {(showButton || noConnectedDevices) && !noSupportedIds && !isElectron ? (
         <AccentButtonLarge onClick={() => dispatch(reloadConnectedDevices())}>
           Authorize device

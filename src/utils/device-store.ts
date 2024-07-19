@@ -34,7 +34,7 @@ const defaultStoreData = {
     renderMode: '2D' as const,
     themeMode: 'dark' as const,
     designDefinitionVersion: 'v3' as const,
-    themeName: 'SEVEN_CRUMBS',
+    themeName: 'CODE7',
     macroEditor: {
       smartOptimizeEnabled: true,
       recordDelaysEnabled: false,

@@ -9,7 +9,7 @@ import {CategoryMenuTooltip} from '../inputs/tooltip';
 import {CategoryIconContainer} from '../panes/grid';
 import {ErrorLink, ErrorsPaneConfig} from '../panes/errors';
 import {ExternalLink} from './external-link';
-import {SevenCrumbsLogo} from '../icons/sevencrumbs';
+import {Code7Logo} from '../icons/code7';
 import {faGithub} from '@fortawesome/free-brands-svg-icons';
 
 const Container = styled.div`
@@ -57,8 +57,8 @@ export const UnconnectedGlobalMenu = () => {
       <GlobalContainer>
         <ExternalLink
           side="left"
-          href="https://sevencrumbs.com/"
-          icon={<SevenCrumbsLogo height="24px" />}
+          href="https://code7.au/"
+          icon={<Code7Logo height="24px" />}
           tooltip="Website"
         />
         <ErrorLink />

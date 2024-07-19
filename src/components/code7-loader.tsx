@@ -8,12 +8,12 @@ export default function (props: {theme: Theme}) {
       width="240px"
     >
       <defs>
-        <clipPath id="sevencrumbs-loader-clip">
+        <clipPath id="code7-loader-clip">
           <path d="m0 7.235 4.177-7.235h55.65l4.177 7.235h-55.65l12.53 21.71h13.87l-11.11 19.25z" />
           <path d="m36.18 55.43h-8.355l19.47-33.72h-22.23l-4.177-7.235h38.94z" />
         </clipPath>
         <linearGradient
-          id="sevencrumbs-loader-shimmer"
+          id="code7-loader-shimmer"
           gradientTransform="rotate(30)"
         >
           <stop offset="0%" stopColor="#ffffff00" />
@@ -30,13 +30,9 @@ export default function (props: {theme: Theme}) {
           />
         </linearGradient>
       </defs>
-      <g clipPath="url(#sevencrumbs-loader-clip)">
+      <g clipPath="url(#code7-loader-clip)">
         <rect width="100%" height="100%" fill="var(--color_accent)" />
-        <rect
-          width="100%"
-          height="100%"
-          fill="url(#sevencrumbs-loader-shimmer)"
-        />
+        <rect width="100%" height="100%" fill="url(#code7-loader-shimmer)" />
       </g>
     </svg>
   );

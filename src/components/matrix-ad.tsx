@@ -41,7 +41,7 @@ export default () => {
   return (
     <AdWrapper>
       <AdContainer
-        href="https://www.tindie.com/products/sevencrumbs/matrix/"
+        href="https://www.tindie.com/products/code7/matrix/"
         target="_blank"
       >
         <AdImage src={matrix} />

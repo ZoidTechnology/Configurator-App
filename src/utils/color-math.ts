@@ -1,7 +1,7 @@
 import {THEMES} from 'src/utils/themes';
 
 export const updateCSSVariables = (themeName: keyof typeof THEMES) => {
-  const selectedTheme = THEMES[themeName] || THEMES['SEVEN_CRUMBS'];
+  const selectedTheme = THEMES[themeName] || THEMES['CODE7'];
 
   document.documentElement.style.setProperty(
     '--color_accent',
