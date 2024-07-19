@@ -130,7 +130,7 @@ export const Settings = () => {
               </Detail>
             </ControlRow>
             <ControlRow>
-              <Label>Keycap Theme</Label>
+              <Label>Theme</Label>
               <Detail>
                 <AccentSelect
                   defaultValue={themeDefaultValue}
