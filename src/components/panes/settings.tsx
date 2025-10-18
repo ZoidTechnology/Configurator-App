@@ -43,11 +43,6 @@ const Container = styled.div`
   padding: 0 12px;
 `;
 
-const DiagnosticContainer = styled(Container)`
-  margin-top: 20px;
-  padding-top: 20px;
-`;
-
 const SettingsErrorMessage = styled(ErrorMessage)`
   margin: 0;
   font-style: italic;
@@ -169,15 +164,13 @@ export const Settings = () => {
                 )}
               </Detail>
             </ControlRow>
-          </Container>
-          {showDiagnostics && selectedDevice ? (
-            <DiagnosticContainer>
+            {showDiagnostics && selectedDevice ? (
               <ControlRow>
                 <Label>Firmware Protocol</Label>
                 <Detail>{selectedDevice.protocol}</Detail>
               </ControlRow>
-            </DiagnosticContainer>
-          ) : null}
+            ) : null}
+          </Container>
         </SpanOverflowCell>
       </Grid>
     </Pane>
