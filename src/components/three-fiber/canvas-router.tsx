@@ -1,14 +1,6 @@
-import {Canvas} from '@react-three/fiber';
-import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
-import {
-  getCustomDefinitions,
-  getSelectedDefinition,
-} from 'src/store/definitionsSlice';
-import {useSize} from 'src/utils/use-size';
-import {useLocation} from 'wouter';
-import {Camera} from './camera';
-import {ConfigureKeyboard, Design, Test} from '../n-links/keyboard';
-import {useAppDispatch, useAppSelector} from 'src/store/hooks';
+import {faPlus, faSpinner} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {a, config, useSpring} from '@react-spring/three';
 import {
   Html,
   OrbitControls,
@@ -16,33 +8,42 @@ import {
   useGLTF,
   useProgress,
 } from '@react-three/drei';
+import {Canvas} from '@react-three/fiber';
+import {DefinitionVersionMap, KeyColorType} from '@the-via/reader';
+import logo from 'assets/models/logo.glb';
+import glbSrc from 'assets/models/keyboard_components.glb';
+import React, {Suspense, useCallback, useEffect, useMemo, useRef} from 'react';
+import {shallowEqual} from 'react-redux';
 import {
+  getCustomDefinitions,
+  getSelectedDefinition,
+} from 'src/store/definitionsSlice';
+import {reloadConnectedDevices} from 'src/store/devicesThunks';
+import {useAppDispatch, useAppSelector} from 'src/store/hooks';
+import {
+  getConfigureKeyboardIsSelectable,
   getLoadProgress,
   updateSelectedKey,
-  getConfigureKeyboardIsSelectable,
 } from 'src/store/keymapSlice';
-import {a, config, useSpring} from '@react-spring/three';
-import React from 'react';
-import {shallowEqual} from 'react-redux';
-import {Object3D} from 'three';
-import {DefinitionVersionMap, KeyColorType} from '@the-via/reader';
-import {UpdateUVMaps} from './update-uv-maps';
 import {
   getDesignDefinitionVersion,
   getSelectedTheme,
 } from 'src/store/settingsSlice';
-import glbSrc from 'assets/models/keyboard_components.glb';
-import logo from 'assets/models/logo.glb';
-import {AccentButtonLarge} from '../inputs/accent-button';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {reloadConnectedDevices} from 'src/store/devicesThunks';
-import {faPlus, faSpinner} from '@fortawesome/free-solid-svg-icons';
-import {Loader} from './code7-loader-3d';
 import {OVERRIDE_HID_CHECK} from 'src/utils/override';
+import {useSize} from 'src/utils/use-size';
+import {Object3D, SpotLight as ThreeSpotLight} from 'three';
+import {useLocation} from 'wouter';
+import {AccentButtonLarge} from '../inputs/accent-button';
+import {ConfigureKeyboard} from '../n-links/keyboard/configure';
+import {Design} from '../n-links/keyboard/design';
+import {Test} from '../n-links/keyboard/test';
+import {Camera} from './camera';
+import {Loader} from './code7-loader-3d';
+import {UpdateUVMaps} from './update-uv-maps';
 import MatrixAd from '../matrix-ad';
 
-useGLTF.preload(logo);
-useGLTF.preload(glbSrc);
+useGLTF.preload(logo, true, true);
+useGLTF.preload(glbSrc, true, true);
 
 const KeyboardBG: React.FC<{
   color: string;
@@ -63,7 +64,21 @@ const KeyboardBG: React.FC<{
     </mesh>
   );
 }, shallowEqual);
+
 export const CanvasRouter = () => {
+  return (
+    <Suspense fallback={null}>
+      <LazyRouter />
+    </Suspense>
+  );
+};
+
+const LazyRouter = React.lazy(async () => {
+  await document.fonts.load('bold 16px Fira Sans').finally();
+  return {default: NonSuspenseCanvasRouter};
+});
+
+export const NonSuspenseCanvasRouter = () => {
   const [path] = useLocation();
   const body = useRef(document.body);
   const containerRef = useRef(null);
@@ -76,9 +91,9 @@ export const CanvasRouter = () => {
   const definitionVersion = useAppSelector(getDesignDefinitionVersion);
   const theme = useAppSelector(getSelectedTheme);
   const accentColor = useMemo(() => theme[KeyColorType.Alpha].c, [theme]);
-  const [fontLoaded, setLoaded] = useState(false);
   const showLoader =
     path === '/' && (!selectedDefinition || loadProgress !== 1);
+  useGLTF(glbSrc, true, true);
   const versionDefinitions: DefinitionVersionMap[] = useMemo(
     () =>
       localDefinitions.filter(
@@ -106,15 +121,8 @@ export const CanvasRouter = () => {
   );
 
   const hideTerrainBG = showLoader;
-  useEffect(() => {
-    // Block rendering due to font legend being required to render keyboardss
-    document.fonts.load('bold 16px Fira Sans').finally(() => {
-      setLoaded(true);
-    });
-  }, []);
   return (
     <>
-      <UpdateUVMaps />
       <div
         style={{
           height: 500,
@@ -135,6 +143,7 @@ export const CanvasRouter = () => {
         ref={containerRef}
       >
         <Canvas flat={true} shadows style={{overflow: 'visible'}}>
+          <UpdateUVMaps />
           <Lights />
           <KeyboardBG
             onClick={terrainOnClick}
@@ -162,7 +171,10 @@ export const CanvasRouter = () => {
                   style={{width: 'max-content'}}
                 >
                   Authorize device
-                  <FontAwesomeIcon style={{marginLeft: '10px'}} icon={faPlus} />
+                  <FontAwesomeIcon
+                    style={{marginLeft: '10px'}}
+                    icon={faPlus}
+                  />
                 </AccentButtonLarge>
               ) : (
                 <>
@@ -179,13 +191,11 @@ export const CanvasRouter = () => {
               )
             ) : null}
           </Html>
-          {fontLoaded ? (
-            <KeyboardGroup
-              containerRef={containerRef}
-              configureKeyboardIsSelectable={configureKeyboardIsSelectable}
-              loadProgress={loadProgress}
-            />
-          ) : null}
+          <KeyboardGroup
+            containerRef={containerRef}
+            configureKeyboardIsSelectable={configureKeyboardIsSelectable}
+            loadProgress={loadProgress}
+          />
         </Canvas>
       </div>
       {hideTerrainBG ? <MatrixAd /> : null}
@@ -194,12 +204,12 @@ export const CanvasRouter = () => {
 };
 
 const Lights = React.memo(() => {
-  const x = 3;
-  const y = 0.5;
-  const z = -15;
+  const x = 2;
+  const y = 0.25;
+  const z = -16;
   const spotlightY = 12;
   const spotlightZ = -19;
-  const ref = useRef<THREE.SpotLight>(null);
+  const ref = useRef<ThreeSpotLight>(null);
   useEffect(() => {
     if (ref.current) {
       ref.current.shadow.mapSize.width = 2048;
@@ -213,10 +223,9 @@ const Lights = React.memo(() => {
     return obj;
   }, []);
   // Setting for better perf on slower machines
-  const renderAllLights = true;
-  return renderAllLights ? (
+  return (
     <>
-      <ambientLight intensity={0.0} />
+      <ambientLight intensity={0.8} />
       <SpotLight
         ref={ref}
         distance={spotlightY + 3}
@@ -228,13 +237,8 @@ const Lights = React.memo(() => {
         castShadow={true}
         anglePower={5} // Diffuse-cone anglePower (default: 5)
       ></SpotLight>
-      <pointLight position={[x, y, z]} intensity={0.8} />
-      <pointLight position={[-x, y, z]} intensity={0.8} />
-    </>
-  ) : (
-    <>
-      <ambientLight intensity={0.4} />
-      <pointLight position={[-0.5, y, z]} intensity={1.5} />
+      <pointLight position={[x, y, z]} intensity={20} />
+      <pointLight position={[-x, y, z]} intensity={20} />
     </>
   );
 }, shallowEqual);
