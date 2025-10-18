@@ -42,8 +42,8 @@ export const ComboKeycap = (props: any) => {
             animation: props.disabled
               ? 'initial' // This prevents the hover animation from firing when the keycap can't be interacted with
               : props.selected
-              ? '.75s infinite alternate select-glow'
-              : '',
+                ? '.75s infinite alternate select-glow'
+                : '',
             transform: `translateX(${
               (-Math.abs(r1[0] - r2[0]) * CSSVarObject.keyXPos) / 2
             }px) perspective(100px) translateZ(${props.keycapZ}px)`,

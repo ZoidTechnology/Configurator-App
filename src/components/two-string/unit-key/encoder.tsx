@@ -124,7 +124,8 @@ const EncoderKeyContent2 = styled.div<{$innerPadding: number; $size: number}>`
     53.07% 3.1%
   );
 
-  background-image: radial-gradient(
+  background-image:
+    radial-gradient(
       currentColor var(--half-size),
       transparent var(--half-size-p1)
     ),

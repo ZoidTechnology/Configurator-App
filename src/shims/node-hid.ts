@@ -11,12 +11,11 @@ const eventWaitBuffer: {
   [path: string]: ((a: Uint8Array) => void)[];
 } = {};
 const filterHIDDevices = (devices: HIDDevice[]) =>
-  devices.filter(
-    (device) =>
-      device.collections?.some(
-        (collection) =>
-          collection.usage === 0x61 && collection.usagePage === 0xff60,
-      ),
+  devices.filter((device) =>
+    device.collections?.some(
+      (collection) =>
+        collection.usage === 0x61 && collection.usagePage === 0xff60,
+    ),
   );
 
 const getVIAPathIdentifier = () =>

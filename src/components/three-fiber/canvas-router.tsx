@@ -132,8 +132,8 @@ export const NonSuspenseCanvasRouter = () => {
             ? !hideTerrainBG
               ? 'translateY(-500px)'
               : !dimensions
-              ? ''
-              : `translateY(${-300 + dimensions!.height / 2}px)`
+                ? ''
+                : `translateY(${-300 + dimensions!.height / 2}px)`
             : '',
           position: hideCanvasScene && !hideTerrainBG ? 'absolute' : 'relative',
           overflow: 'visible',
@@ -171,10 +171,7 @@ export const NonSuspenseCanvasRouter = () => {
                   style={{width: 'max-content'}}
                 >
                   Authorize device
-                  <FontAwesomeIcon
-                    style={{marginLeft: '10px'}}
-                    icon={faPlus}
-                  />
+                  <FontAwesomeIcon style={{marginLeft: '10px'}} icon={faPlus} />
                 </AccentButtonLarge>
               ) : (
                 <>

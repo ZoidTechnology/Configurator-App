@@ -1010,8 +1010,8 @@ export const getKeycodesForKeyboard = (
       keycodes === KeycodeType.None
         ? []
         : keycodes === KeycodeType.QMK
-        ? categoriesForKeycodeModule(BuiltInKeycodeModule.QMKLighting)
-        : categoriesForKeycodeModule(BuiltInKeycodeModule.WTLighting),
+          ? categoriesForKeycodeModule(BuiltInKeycodeModule.QMKLighting)
+          : categoriesForKeycodeModule(BuiltInKeycodeModule.WTLighting),
     );
   } else {
     const {keycodes} = definition;

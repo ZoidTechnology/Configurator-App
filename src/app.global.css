@@ -72,8 +72,8 @@ a:hover {
   --color_tinge: #c7c3c3;
   --color_tinge-light: #ebe4e4;
   --color_tinge-dark: #796c6c;
-  --box-shadow-keycap: inset -1px -1px 0 rgb(0 0 0 / 20%),
-    inset 1px 1px 0 rgb(255 255 255 / 20%);
+  --box-shadow-keycap:
+    inset -1px -1px 0 rgb(0 0 0 / 20%), inset 1px 1px 0 rgb(255 255 255 / 20%);
   --box-shadow-keyboard: var(--box-shadow-keycap);
 }
 
