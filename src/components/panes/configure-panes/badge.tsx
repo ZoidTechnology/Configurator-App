@@ -19,7 +19,7 @@ import {isElectron} from 'src/utils/running-context';
 
 const Container = styled.div`
   position: absolute;
-  right: 15px;
+  right: 20px;
   top: 0px;
   font-size: 18px;
   pointer-events: none;
@@ -30,13 +30,12 @@ const KeyboardTitle = styled.label`
   pointer-events: all;
   display: inline-block;
   background: var(--color_accent);
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
-  font-size: 18px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-size: 20px;
   text-transform: uppercase;
   color: var(--color_inside-accent);
-  padding: 1px 10px;
-  margin-right: 10px;
+  padding: 5px 10px;
   border: solid 1px var(--bg_control);
   border-top: none;
   cursor: pointer;
@@ -48,11 +47,11 @@ const KeyboardTitle = styled.label`
 const KeyboardList = styled.ul<{$show: boolean}>`
   padding: 0;
   border: 1px solid var(--bg_control);
-  border-radius: 6px;
+  border-radius: 5px;
   background-color: var(--bg_menu);
   margin: 0;
   margin-top: 5px;
-  right: 10px;
+  right: 0;
   position: absolute;
   pointer-events: ${(props) => (props.$show ? 'all' : 'none')};
   transition: all 0.2s ease-out;
@@ -79,7 +78,7 @@ const KeyboardButton = styled.button<{$selected?: boolean}>`
       : 'var(--color_label-highlighted)'};
   cursor: pointer;
   text-align: left;
-  font-size: 14px;
+  font-size: 20px;
   text-transform: uppercase;
   padding: 5px 10px;
   &:hover {

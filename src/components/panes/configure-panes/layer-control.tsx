@@ -10,7 +10,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   position: absolute;
-  left: 15px;
+  left: 20px;
   font-weight: 400;
   top: 10px;
 `;
@@ -18,9 +18,12 @@ const Label = styled.label`
   font-size: 20px;
   text-transform: uppercase;
   color: var(--color_light-grey);
-  margin-right: 6px;
+  margin-right: 5px;
 `;
 const LayerButton = styled.button<{$selected?: boolean}>`
+  padding: 0 5px;
+  border-radius: 5px;
+  margin-left: 5px;
   outline: none;
   font-variant-numeric: tabular-nums;
   border: none;
