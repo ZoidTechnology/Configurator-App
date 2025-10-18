@@ -1,12 +1,7 @@
 import {faPlus, faSpinner} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {a, config, useSpring} from '@react-spring/three';
-import {
-  Html,
-  OrbitControls,
-  useGLTF,
-  useProgress,
-} from '@react-three/drei';
+import {Html, OrbitControls, useGLTF, useProgress} from '@react-three/drei';
 import {Canvas} from '@react-three/fiber';
 import {DefinitionVersionMap, KeyColorType} from '@the-via/reader';
 import logo from 'assets/models/logo.glb';
