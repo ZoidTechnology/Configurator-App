@@ -4,7 +4,6 @@ import {a, config, useSpring} from '@react-spring/three';
 import {
   Html,
   OrbitControls,
-  SpotLight,
   useGLTF,
   useProgress,
 } from '@react-three/drei';
@@ -31,7 +30,6 @@ import {
 } from 'src/store/settingsSlice';
 import {OVERRIDE_HID_CHECK} from 'src/utils/override';
 import {useSize} from 'src/utils/use-size';
-import {Object3D, SpotLight as ThreeSpotLight} from 'three';
 import {useLocation} from 'wouter';
 import {AccentButtonLarge} from '../inputs/accent-button';
 import {ConfigureKeyboard} from '../n-links/keyboard/configure';
@@ -202,40 +200,13 @@ export const NonSuspenseCanvasRouter = () => {
 
 const Lights = React.memo(() => {
   const x = 2;
-  const y = 0.25;
+  const y = 0;
   const z = -16;
-  const spotlightY = 12;
-  const spotlightZ = -19;
-  const ref = useRef<ThreeSpotLight>(null);
-  useEffect(() => {
-    if (ref.current) {
-      ref.current.shadow.mapSize.width = 2048;
-      ref.current.shadow.mapSize.height = 2048;
-    }
-  }, [ref.current]);
-  const targetObj = React.useMemo(() => {
-    const obj = new Object3D();
-    obj.position.set(0, 0, spotlightZ);
-    obj.updateMatrixWorld();
-    return obj;
-  }, []);
-  // Setting for better perf on slower machines
   return (
     <>
-      <ambientLight intensity={0.8} />
-      <SpotLight
-        ref={ref}
-        distance={spotlightY + 3}
-        position={[0, spotlightY, spotlightZ + 2]}
-        angle={Math.PI / 5}
-        attenuation={5}
-        target={targetObj}
-        intensity={10}
-        castShadow={true}
-        anglePower={5} // Diffuse-cone anglePower (default: 5)
-      ></SpotLight>
-      <pointLight position={[x, y, z]} intensity={20} />
-      <pointLight position={[-x, y, z]} intensity={20} />
+      <ambientLight intensity={0.75} />
+      <pointLight position={[x, y, z]} intensity={30} />
+      <pointLight position={[-x, y, z]} intensity={30} />
     </>
   );
 }, shallowEqual);
