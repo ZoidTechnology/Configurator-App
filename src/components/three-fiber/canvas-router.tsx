@@ -168,7 +168,7 @@ export const NonSuspenseCanvasRouter = () => {
                   onClick={() => dispatch(reloadConnectedDevices())}
                   style={{width: 'max-content'}}
                 >
-                  Authorize device
+                  Connect device
                   <FontAwesomeIcon style={{marginLeft: '10px'}} icon={faPlus} />
                 </AccentButtonLarge>
               ) : (

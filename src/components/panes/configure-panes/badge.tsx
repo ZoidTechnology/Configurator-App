@@ -48,7 +48,6 @@ const KeyboardTitle = styled.label`
 const KeyboardList = styled.ul<{$show: boolean}>`
   padding: 0;
   border: 1px solid var(--bg_control);
-  width: 160px;
   border-radius: 6px;
   background-color: var(--bg_menu);
   margin: 0;
@@ -138,7 +137,7 @@ const KeyboardSelectors: React.FC<{
         })}
         {!isElectron && (
           <KeyboardButton onClick={requestAndChangeDevice}>
-            Authorize New
+            Connect device
             <FontAwesomeIcon icon={faPlus} style={{marginLeft: '10px'}} />
           </KeyboardButton>
         )}
