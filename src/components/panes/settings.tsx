@@ -84,95 +84,83 @@ export const Settings = () => {
   );
   return (
     <Pane>
-      <Grid style={{overflow: 'hidden'}}>
-        <MenuCell style={{pointerEvents: 'all', borderTop: 'none'}}>
-          <MenuContainer>
-            <Row $selected={true}>
-              <IconContainer>
-                <FontAwesomeIcon icon={faToolbox} />
-                <MenuTooltip>General</MenuTooltip>
-              </IconContainer>
-            </Row>
-          </MenuContainer>
-        </MenuCell>
-        <SpanOverflowCell style={{flex: 1, borderWidth: 0}}>
-          <Container>
-            <ControlRow>
-              <Label>Show Design tab</Label>
-              <Detail>
-                <AccentSlider
-                  onChange={() => dispatch(toggleCreatorMode())}
-                  isChecked={showDesignTab}
-                />
-              </Detail>
-            </ControlRow>
-            <ControlRow>
-              <Label>Fast Key Mapping</Label>
-              <Detail>
-                <AccentSlider
-                  onChange={() => dispatch(toggleFastRemap())}
-                  isChecked={!disableFastRemap}
-                />
-              </Detail>
-            </ControlRow>
-            <ControlRow>
-              <Label>Light Mode</Label>
-              <Detail>
-                <AccentSlider
-                  onChange={() => dispatch(toggleThemeMode())}
-                  isChecked={themeMode === 'light'}
-                />
-              </Detail>
-            </ControlRow>
-            <ControlRow>
-              <Label>Theme</Label>
-              <Detail>
-                <AccentSelect
-                  defaultValue={themeDefaultValue}
-                  options={themeSelectOptions}
-                  onChange={(option: any) => {
-                    option && dispatch(updateThemeName(option.value));
-                  }}
-                />
-              </Detail>
-            </ControlRow>
-            <ControlRow>
-              <Label>Render Mode</Label>
-              <Detail>
-                <AccentSelect
-                  defaultValue={renderModeDefaultValue}
-                  options={renderModeOptions}
-                  onChange={(option: any) => {
-                    option && dispatch(updateRenderMode(option.value));
-                  }}
-                />
-              </Detail>
-            </ControlRow>
-            <ControlRow>
-              <Label>Show Diagnostic Information</Label>
+      <SpanOverflowCell style={{flex: 1, borderWidth: 0}}>
+        <Container>
+          <ControlRow>
+            <Label>Show Design tab</Label>
+            <Detail>
+              <AccentSlider
+                onChange={() => dispatch(toggleCreatorMode())}
+                isChecked={showDesignTab}
+              />
+            </Detail>
+          </ControlRow>
+          <ControlRow>
+            <Label>Fast Key Mapping</Label>
+            <Detail>
+              <AccentSlider
+                onChange={() => dispatch(toggleFastRemap())}
+                isChecked={!disableFastRemap}
+              />
+            </Detail>
+          </ControlRow>
+          <ControlRow>
+            <Label>Light Mode</Label>
+            <Detail>
+              <AccentSlider
+                onChange={() => dispatch(toggleThemeMode())}
+                isChecked={themeMode === 'light'}
+              />
+            </Detail>
+          </ControlRow>
+          <ControlRow>
+            <Label>Theme</Label>
+            <Detail>
+              <AccentSelect
+                defaultValue={themeDefaultValue}
+                options={themeSelectOptions}
+                onChange={(option: any) => {
+                  option && dispatch(updateThemeName(option.value));
+                }}
+              />
+            </Detail>
+          </ControlRow>
+          <ControlRow>
+            <Label>Render Mode</Label>
+            <Detail>
+              <AccentSelect
+                defaultValue={renderModeDefaultValue}
+                options={renderModeOptions}
+                onChange={(option: any) => {
+                  option && dispatch(updateRenderMode(option.value));
+                }}
+              />
+            </Detail>
+          </ControlRow>
+          <ControlRow>
+            <Label>Show Diagnostic Information</Label>
 
-              <Detail>
-                {selectedDevice ? (
-                  <AccentSlider
-                    onChange={() => setShowDiagnostics(!showDiagnostics)}
-                    isChecked={showDiagnostics}
-                  />
-                ) : (
-                  <SettingsErrorMessage>
-                    Requires connected device
-                  </SettingsErrorMessage>
-                )}
-              </Detail>
+            <Detail>
+              {selectedDevice ? (
+                <AccentSlider
+                  onChange={() => setShowDiagnostics(!showDiagnostics)}
+                  isChecked={showDiagnostics}
+                />
+              ) : (
+                <SettingsErrorMessage>
+                  Requires connected device
+                </SettingsErrorMessage>
+              )}
+            </Detail>
+          </ControlRow>
+          {showDiagnostics && selectedDevice ? (
+            <ControlRow>
+              <Label>Firmware Protocol</Label>
+              <Detail>{selectedDevice.protocol}</Detail>
             </ControlRow>
-            {showDiagnostics && selectedDevice ? (
-              <ControlRow>
-                <Label>Firmware Protocol</Label>
-                <Detail>{selectedDevice.protocol}</Detail>
-              </ControlRow>
-            ) : null}
-          </Container>
-        </SpanOverflowCell>
-      </Grid>
+          ) : null}
+        </Container>
+      </SpanOverflowCell>
     </Pane>
   );
 };

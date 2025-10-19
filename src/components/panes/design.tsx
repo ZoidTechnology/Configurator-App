@@ -292,136 +292,122 @@ export const DesignTab: FC = () => {
           </UploadIcon>
         )}
       </SinglePaneFlexCell>
-      <Grid style={{overflow: 'hidden'}}>
-        <MenuCell style={{pointerEvents: 'all'}}>
-          <MenuContainer>
-            <Row $selected={true}>
-              <IconContainer>
-                <FontAwesomeIcon icon={faBook} />
-                <MenuTooltip>Add Definition</MenuTooltip>
-              </IconContainer>
-            </Row>
-          </MenuContainer>
-        </MenuCell>
-        <SpanOverflowCell>
-          <Container>
-            <ControlRow>
-              <Label>Load Draft Definition</Label>
-              <Detail>
-                <AccentUploadButton
-                  multiple
-                  inputRef={uploadButton}
-                  onLoad={(files) => {
-                    importDefinitions(
-                      Array.from(files),
-                      definitionVersion,
-                      dispatch,
-                      setErrors,
-                    );
-                  }}
-                >
-                  Load
-                </AccentUploadButton>
-              </Detail>
-            </ControlRow>
-            <ControlRow>
-              <Label>Use V2 definitions (deprecated)</Label>
-              <Detail>
-                <AccentSlider
-                  isChecked={definitionVersion === 'v2'}
-                  onChange={(val) =>
-                    dispatch(updateDesignDefinitionVersion(val ? 'v2' : 'v3'))
-                  }
-                />
-              </Detail>
-            </ControlRow>
-            {definition && (
-              <>
-                <ControlRow>
-                  <Label>Shown Keyboard Definition</Label>
-                  <Detail>
-                    <AccentSelect
-                      onChange={(option: any) => {
-                        // Reset selected layouts when choosing a different
-                        // definition
-                        dispatch(updateSelectedOptionKeys([]));
-
-                        if (option) {
-                          dispatch(
-                            updateSelectedDefinitionIndex(+option.value),
-                          );
-                        }
-                      }}
-                      value={options[selectedDefinitionIndex]}
-                      options={options}
-                    />
-                  </Detail>
-                </ControlRow>
-              </>
-            )}
-            {definition && (
-              <Layouts
-                definition={definition}
-                onLayoutChange={(newSelectedOptionKeys) => {
-                  dispatch(updateSelectedOptionKeys(newSelectedOptionKeys));
+      <SpanOverflowCell>
+        <Container>
+          <ControlRow>
+            <Label>Load Draft Definition</Label>
+            <Detail>
+              <AccentUploadButton
+                multiple
+                inputRef={uploadButton}
+                onLoad={(files) => {
+                  importDefinitions(
+                    Array.from(files),
+                    definitionVersion,
+                    dispatch,
+                    setErrors,
+                  );
                 }}
+              >
+                Load
+              </AccentUploadButton>
+            </Detail>
+          </ControlRow>
+          <ControlRow>
+            <Label>Use V2 definitions (deprecated)</Label>
+            <Detail>
+              <AccentSlider
+                isChecked={definitionVersion === 'v2'}
+                onChange={(val) =>
+                  dispatch(updateDesignDefinitionVersion(val ? 'v2' : 'v3'))
+                }
               />
-            )}
-            {definition && (
+            </Detail>
+          </ControlRow>
+          {definition && (
+            <>
               <ControlRow>
-                <Label>Show Matrix</Label>
+                <Label>Shown Keyboard Definition</Label>
                 <Detail>
-                  <AccentSlider
-                    isChecked={showMatrix}
-                    onChange={(val) => {
-                      dispatch(updateShowMatrix(val));
+                  <AccentSelect
+                    onChange={(option: any) => {
+                      // Reset selected layouts when choosing a different
+                      // definition
+                      dispatch(updateSelectedOptionKeys([]));
+
+                      if (option) {
+                        dispatch(updateSelectedDefinitionIndex(+option.value));
+                      }
                     }}
+                    value={options[selectedDefinitionIndex]}
+                    options={options}
                   />
                 </Detail>
               </ControlRow>
-            )}
-            {errors.map((error: string) => (
-              <IndentedControlRow>
-                <DesignErrorMessage>{error}</DesignErrorMessage>
-              </IndentedControlRow>
-            ))}
+            </>
+          )}
+          {definition && (
+            <Layouts
+              definition={definition}
+              onLayoutChange={(newSelectedOptionKeys) => {
+                dispatch(updateSelectedOptionKeys(newSelectedOptionKeys));
+              }}
+            />
+          )}
+          {definition && (
             <ControlRow>
-              <Label>Draft Definitions</Label>
+              <Label>Show Matrix</Label>
               <Detail>
-                {Object.values(versionDefinitions).length} Definitions
+                <AccentSlider
+                  isChecked={showMatrix}
+                  onChange={(val) => {
+                    dispatch(updateShowMatrix(val));
+                  }}
+                />
               </Detail>
             </ControlRow>
-            {versionDefinitions.map((definition) => {
-              return (
-                <IndentedControlRow
-                  key={`${definitionVersion}-${definition[definitionVersion].vendorProductId}`}
-                >
-                  <SubLabel>{definition[definitionVersion].name}</SubLabel>
-                  <Detail>
-                    {formatNumberAsHex(
-                      definition[definitionVersion].vendorProductId,
-                      8,
-                    )}
-                    <IconButtonUnfilledContainer
-                      onClick={() => {
-                        dispatch(
-                          unloadCustomDefinition({
-                            id: definition[definitionVersion].vendorProductId,
-                            version: definitionVersion,
-                          }),
-                        );
-                      }}
-                      style={{marginLeft: 10, borderRadius: 4}}
-                    >
-                      <FontAwesomeIcon icon={faXmark} size={'lg'} />
-                    </IconButtonUnfilledContainer>
-                  </Detail>
-                </IndentedControlRow>
-              );
-            })}
-          </Container>
-        </SpanOverflowCell>
-      </Grid>
+          )}
+          {errors.map((error: string) => (
+            <IndentedControlRow>
+              <DesignErrorMessage>{error}</DesignErrorMessage>
+            </IndentedControlRow>
+          ))}
+          <ControlRow>
+            <Label>Draft Definitions</Label>
+            <Detail>
+              {Object.values(versionDefinitions).length} Definitions
+            </Detail>
+          </ControlRow>
+          {versionDefinitions.map((definition) => {
+            return (
+              <IndentedControlRow
+                key={`${definitionVersion}-${definition[definitionVersion].vendorProductId}`}
+              >
+                <SubLabel>{definition[definitionVersion].name}</SubLabel>
+                <Detail>
+                  {formatNumberAsHex(
+                    definition[definitionVersion].vendorProductId,
+                    8,
+                  )}
+                  <IconButtonUnfilledContainer
+                    onClick={() => {
+                      dispatch(
+                        unloadCustomDefinition({
+                          id: definition[definitionVersion].vendorProductId,
+                          version: definitionVersion,
+                        }),
+                      );
+                    }}
+                    style={{marginLeft: 10, borderRadius: 4}}
+                  >
+                    <FontAwesomeIcon icon={faXmark} size={'lg'} />
+                  </IconButtonUnfilledContainer>
+                </Detail>
+              </IndentedControlRow>
+            );
+          })}
+        </Container>
+      </SpanOverflowCell>
     </DesignPane>
   );
 };
