@@ -13,6 +13,9 @@
   "engines": {
     "node": ">=18.0.0"
   },
+  "overrides": {
+    "ajv": "^6.12.6"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.3.0",
     "@fortawesome/free-brands-svg-icons": "^6.3.0",
