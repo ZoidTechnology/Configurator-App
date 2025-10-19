@@ -11,11 +11,13 @@ export const Grid = styled.div`
   }
 `;
 
-export const Cell = styled.div`
+export const Cell = styled.div``;
+
+export const BorderRightCell = styled(Cell)`
   border-right: 1px solid var(--border_color_cell);
 `;
 
-export const MenuCell = styled(Cell)`
+export const MenuCell = styled(BorderRightCell)`
   background: var(--bg_menu);
   border-top: 1px solid var(--border_color_cell);
 `;
@@ -31,7 +33,7 @@ export const SpanOverflowCell = styled(Cell)`
   grid-column: span 2;
 `;
 
-export const SubmenuCell = styled(Cell)`
+export const SubmenuCell = styled(BorderRightCell)`
   border-top: 1px solid var(--border_color_cell);
   background: var(--bg_control);
 `;
