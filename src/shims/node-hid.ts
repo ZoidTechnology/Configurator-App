@@ -142,7 +142,7 @@ const ExtendedHID = {
       }
     }
 
-    read(fn: (err?: Error, data?: ArrayBuffer) => void) {
+    read(fn: (err?: Error, data?: Uint8Array) => void) {
       this.fastForwardGlobalBuffer(Date.now());
       if (globalBuffer[this.path].length > 0) {
         // this should be a noop normally
