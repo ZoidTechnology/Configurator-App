@@ -41,12 +41,12 @@ export default () => {
   return (
     <AdWrapper>
       <AdContainer
-        href="https://www.tindie.com/products/code7/matrix/"
+        href="https://code7.au/products/matrix"
         target="_blank"
       >
         <AdImage src={matrix} />
         <AdCopy>
-          Check out the <AdHighlight>Matrix</AdHighlight> macro pad on Tindie
+          Check out the <AdHighlight>Matrix</AdHighlight> macro pad from Code7
         </AdCopy>
       </AdContainer>
     </AdWrapper>
